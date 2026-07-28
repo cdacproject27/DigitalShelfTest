@@ -1,0 +1,7 @@
+# Documentation folder
+document/
+document
+.vs/
+**/.vs/
+bin/
+obj/
