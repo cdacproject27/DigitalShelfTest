@@ -119,7 +119,12 @@ namespace WebDigital.Services.Implements
                 GenreName = product.ProductGenereNavigation?.GenereDesc,
                 LanguageName = product.ProductLangNavigation?.LanguageDesc,
                 PublisherName = product.ProductPublisherNavigation?.Name,
-                TypeName = product.ProductTypeNavigation?.TypeDesc
+                TypeName = product.ProductTypeNavigation?.TypeDesc,
+                AuthorId = product.ProductAuthor,
+                GenreId = product.ProductGenere,
+                LanguageId = product.ProductLang,
+                PublisherId = product.ProductPublisher,
+                TypeId = product.ProductType
             };
         }
 

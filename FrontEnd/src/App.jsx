@@ -9,6 +9,11 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import AdminDashboard from "./pages/AdminDashboard";
 import UserDashboard from "./pages/UserDashboard";
+import Cart from "./pages/Cart";
+import OrderConfirmation from "./pages/OrderConfirmation";
+import Orders from "./pages/Orders";
+import MyShelf from "./pages/MyShelf";
+import MyLibrary from "./pages/MyLibrary";
 import ProtectedRoute from "./components/ProtectedRoutes";
 
 function App() {
@@ -16,20 +21,11 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        <Route
-          path="/"
-          element={<Home />}
-        />
+        <Route path="/" element={<Home />} />
 
-        <Route
-          path="/login"
-          element={<Login />}
-        />
+        <Route path="/login" element={<Login />} />
 
-        <Route
-          path="/signup"
-          element={<SignUp />}
-        />
+        <Route path="/signup" element={<SignUp />} />
 
         <Route
           path="/admin"
@@ -45,6 +41,51 @@ function App() {
           element={
             <ProtectedRoute role="USER">
               <UserDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/cart"
+          element={
+            <ProtectedRoute role="USER">
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/order-confirmation/:id"
+          element={
+            <ProtectedRoute role="USER">
+              <OrderConfirmation />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/orders"
+          element={
+            <ProtectedRoute role="USER">
+              <Orders />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/my-shelf"
+          element={
+            <ProtectedRoute role="USER">
+              <MyShelf />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/my-library"
+          element={
+            <ProtectedRoute role="USER">
+              <MyLibrary />
             </ProtectedRoute>
           }
         />

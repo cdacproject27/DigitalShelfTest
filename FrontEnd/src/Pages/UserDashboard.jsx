@@ -9,6 +9,7 @@ function UserDashboard() {
   const [filters, setFilters] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [cartMessage, setCartMessage] = useState("");
 
   const fetchProducts = async (searchTerm, activeFilters) => {
     setLoading(true);
@@ -53,6 +54,19 @@ function UserDashboard() {
     fetchProducts("", {});
   };
 
+  const handleAddToCart = async (productId) => {
+    setCartMessage("");
+    try {
+      await api.post("/cart", { productId, qty: 1 });
+      setCartMessage("Added to cart! Choose Buy or Rent at checkout.");
+      setTimeout(() => setCartMessage(""), 2500);
+    } catch (err) {
+      console.log(err);
+      const message = err.response?.data?.message || "Could not add to cart";
+      setCartMessage(message);
+    }
+  };
+
   return (
     <div style={{ fontFamily: "Segoe UI, Arial, sans-serif", minHeight: "100vh", background: "#f8fafc" }}>
       <Navbar search={search} onSearchChange={setSearch} onSearchSubmit={handleSearchSubmit} />
@@ -65,6 +79,21 @@ function UserDashboard() {
         />
 
         <div style={{ flex: 1, padding: "24px 32px" }}>
+          {cartMessage && (
+            <div
+              style={{
+                backgroundColor: "#dcfce7",
+                color: "#166534",
+                padding: "10px 12px",
+                borderRadius: "8px",
+                marginBottom: "16px",
+                fontSize: "0.9rem",
+              }}
+            >
+              {cartMessage}
+            </div>
+          )}
+
           {loading && <p>Loading books...</p>}
 
           {error && (
@@ -177,6 +206,7 @@ function UserDashboard() {
 
                     <div style={{ display: "flex", gap: "8px" }}>
                       <button
+                        onClick={() => handleAddToCart(product.productId)}
                         style={{
                           flex: 1,
                           padding: "8px",
@@ -193,6 +223,7 @@ function UserDashboard() {
 
                       {product.isRentable && (
                         <button
+                          onClick={() => handleAddToCart(product.productId)}
                           style={{
                             flex: 1,
                             padding: "8px",
