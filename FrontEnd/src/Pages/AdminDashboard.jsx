@@ -15,7 +15,12 @@ const emptyForm = {
   minRentDays: "",
   isRentable: false,
   isLibrary: false,
-};  
+  productAuthor: "",
+  productGenere: "",
+  productLang: "",
+  productType: "",
+  productPublisher: "",
+};
 
 function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("products");
@@ -23,17 +28,47 @@ function AdminDashboard() {
   const [products, setProducts] = useState([]);
   const [users, setUsers] = useState([]);
 
+  const [authors, setAuthors] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [languages, setLanguages] = useState([]);
+  const [publishers, setPublishers] = useState([]);
+  const [productTypes, setProductTypes] = useState([]);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState(null);
   const [form, setForm] = useState(emptyForm);
+  const [justCreated, setJustCreated] = useState(false);
 
   const navigate = useNavigate();
 
   const userDataRaw = localStorage.getItem("user");
   const adminName = userDataRaw ? JSON.parse(userDataRaw).userName : "Admin";
+
+  const loadReferenceData = async () => {
+    try {
+      const [authorRes, genreRes, langRes, pubRes, typeRes] = await Promise.all([
+        api.get("/authors"),
+        api.get("/genres"),
+        api.get("/languages"),
+        api.get("/publishers"),
+        api.get("/product-types"),
+      ]);
+      setAuthors(authorRes.data);
+      setGenres(genreRes.data);
+      setLanguages(langRes.data);
+      setPublishers(pubRes.data);
+      setProductTypes(typeRes.data);
+    } catch (err) {
+      console.log("Could not load reference data", err);
+    }
+  };
+
+  useEffect(() => {
+    loadReferenceData();
+  }, []);
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -85,31 +120,48 @@ function AdminDashboard() {
     setForm(emptyForm);
     setEditingId(null);
     setShowForm(false);
+    setJustCreated(false);
   };
 
   const handleAddNew = () => {
     setForm(emptyForm);
     setEditingId(null);
+    setJustCreated(false);
     setShowForm(true);
   };
 
-  const handleEdit = (product) => {
-    setForm({
-      productName: product.productName || "",
-      productIsbn: product.productIsbn || "",
-      productDescriptionShort: product.productDescriptionShort || "",
-      productDescriptionLong: product.productDescriptionLong || "",
-      productImage: product.productImage || "",
-      productBaseprice: product.productBaseprice ?? "",
-      productOfferprice: product.productOfferprice ?? "",
-      discountPercent: product.discountPercent ?? "",
-      rentPerDay: product.rentPerDay ?? "",
-      minRentDays: product.minRentDays ?? "",
-      isRentable: !!product.isRentable,
-      isLibrary: !!product.isLibrary,
-    });
-    setEditingId(product.productId);
-    setShowForm(true);
+  // Fetches the full product detail (with real FK ids) before opening the edit form
+  const handleEdit = async (productListItem) => {
+    try {
+      const res = await api.get(`/products/${productListItem.productId}`);
+      const product = res.data;
+
+      setForm({
+        productName: product.productName || "",
+        productIsbn: product.productIsbn || "",
+        productDescriptionShort: product.productDescriptionShort || "",
+        productDescriptionLong: product.productDescriptionLong || "",
+        productImage: product.productImage || "",
+        productBaseprice: product.productBaseprice ?? "",
+        productOfferprice: product.productOfferprice ?? "",
+        discountPercent: product.discountPercent ?? "",
+        rentPerDay: product.rentPerDay ?? "",
+        minRentDays: product.minRentDays ?? "",
+        isRentable: !!product.isRentable,
+        isLibrary: !!product.isLibrary,
+        productAuthor: product.authorId ?? "",
+        productGenere: product.genreId ?? "",
+        productLang: product.languageId ?? "",
+        productType: product.typeId ?? "",
+        productPublisher: product.publisherId ?? "",
+      });
+      setEditingId(product.productId);
+      setJustCreated(false);
+      setShowForm(true);
+    } catch (err) {
+      console.log(err);
+      alert("Could not load product details for editing");
+    }
   };
 
   const handleDelete = async (productId) => {
@@ -123,6 +175,66 @@ function AdminDashboard() {
     } catch (err) {
       console.log(err);
       alert(err.response?.data?.message || "Failed to delete product");
+    }
+  };
+
+  const handleUploadPdf = async (productId, file) => {
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      await api.post(`/products/${productId}/pdf`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      alert("PDF uploaded successfully!");
+    } catch (err) {
+      console.log(err);
+      alert(err.response?.data?.message || "Failed to upload PDF");
+    }
+  };
+
+  // Quick-add a new reference entry (author, genre, language, publisher, or type)
+  // without leaving the product form or going to Swagger
+  const handleQuickAdd = async (type) => {
+    try {
+      if (type === "author") {
+        const name = window.prompt("New author name:");
+        if (!name) return;
+        const bio = window.prompt("Short bio (optional):") || "";
+        const res = await api.post("/authors", { name, bio });
+        await loadReferenceData();
+        handleFormChange("productAuthor", res.data.authorId);
+      } else if (type === "genre") {
+        const genreDesc = window.prompt("New genre name:");
+        if (!genreDesc) return;
+        const res = await api.post("/genres", { genreDesc });
+        await loadReferenceData();
+        handleFormChange("productGenere", res.data.genreId);
+      } else if (type === "language") {
+        const languageDesc = window.prompt("New language name:");
+        if (!languageDesc) return;
+        const res = await api.post("/languages", { languageDesc });
+        await loadReferenceData();
+        handleFormChange("productLang", res.data.languageId);
+      } else if (type === "publisher") {
+        const name = window.prompt("New publisher name:");
+        if (!name) return;
+        const email = window.prompt("Publisher contact email:") || "";
+        const res = await api.post("/publishers", { name, email });
+        await loadReferenceData();
+        handleFormChange("productPublisher", res.data.publisherId);
+      } else if (type === "type") {
+        const typeDesc = window.prompt("New product type (e.g. Paperback, Hardcover, E-book):");
+        if (!typeDesc) return;
+        const res = await api.post("/product-types", { typeDesc });
+        await loadReferenceData();
+        handleFormChange("productType", res.data.typeId);
+      }
+    } catch (err) {
+      console.log(err);
+      alert(err.response?.data?.message || "Failed to add new entry");
     }
   };
 
@@ -142,16 +254,26 @@ function AdminDashboard() {
       minRentDays: form.minRentDays ? parseInt(form.minRentDays) : null,
       isRentable: form.isRentable,
       isLibrary: form.isLibrary,
+      productAuthor: form.productAuthor ? parseInt(form.productAuthor) : null,
+      productGenere: form.productGenere ? parseInt(form.productGenere) : null,
+      productLang: form.productLang ? parseInt(form.productLang) : null,
+      productType: form.productType ? parseInt(form.productType) : null,
+      productPublisher: form.productPublisher ? parseInt(form.productPublisher) : null,
     };
 
     try {
       if (editingId) {
         await api.put(`/products/${editingId}`, payload);
+        resetForm();
+        fetchProducts();
       } else {
-        await api.post("/products", payload);
+        const res = await api.post("/products", payload);
+        // Keep the form open, switch into "edit mode" for the new product
+        // so the admin can immediately upload its PDF without hunting for it in the table
+        setEditingId(res.data.productId);
+        setJustCreated(true);
+        fetchProducts();
       }
-      resetForm();
-      fetchProducts();
     } catch (err) {
       console.log(err);
       alert(err.response?.data?.message || "Failed to save product");
@@ -272,8 +394,27 @@ function AdminDashboard() {
                 }}
               >
                 <h4 style={{ gridColumn: "1 / -1", margin: 0 }}>
-                  {editingId ? "Edit Product" : "New Product"}
+                  {editingId && !justCreated
+                    ? "Edit Product"
+                    : justCreated
+                      ? "Product Created — Add PDF Below"
+                      : "New Product"}
                 </h4>
+
+                {justCreated && (
+                  <div
+                    style={{
+                      gridColumn: "1 / -1",
+                      background: "#dcfce7",
+                      color: "#166534",
+                      padding: "10px 12px",
+                      borderRadius: "8px",
+                      fontSize: "0.9rem",
+                    }}
+                  >
+                    Product created! You can now upload its PDF below, or click Done.
+                  </div>
+                )}
 
                 <input
                   placeholder="Product Name"
@@ -357,6 +498,98 @@ function AdminDashboard() {
                   style={inputStyle}
                 />
 
+                {/* --- Reference data dropdowns, each with a quick "+ Add New" button --- */}
+
+                <div style={{ display: "flex", gap: "6px" }}>
+                  <select
+                    value={form.productAuthor}
+                    onChange={(e) => handleFormChange("productAuthor", e.target.value)}
+                    style={{ ...inputStyle, flex: 1 }}
+                  >
+                    <option value="">-- Select Author --</option>
+                    {authors.map((a) => (
+                      <option key={a.authorId} value={a.authorId}>
+                        {a.name}
+                      </option>
+                    ))}
+                  </select>
+                  <button type="button" onClick={() => handleQuickAdd("author")} style={quickAddBtnStyle}>
+                    + New
+                  </button>
+                </div>
+
+                <div style={{ display: "flex", gap: "6px" }}>
+                  <select
+                    value={form.productGenere}
+                    onChange={(e) => handleFormChange("productGenere", e.target.value)}
+                    style={{ ...inputStyle, flex: 1 }}
+                  >
+                    <option value="">-- Select Genre --</option>
+                    {genres.map((g) => (
+                      <option key={g.genreId} value={g.genreId}>
+                        {g.genreDesc}
+                      </option>
+                    ))}
+                  </select>
+                  <button type="button" onClick={() => handleQuickAdd("genre")} style={quickAddBtnStyle}>
+                    + New
+                  </button>
+                </div>
+
+                <div style={{ display: "flex", gap: "6px" }}>
+                  <select
+                    value={form.productLang}
+                    onChange={(e) => handleFormChange("productLang", e.target.value)}
+                    style={{ ...inputStyle, flex: 1 }}
+                  >
+                    <option value="">-- Select Language --</option>
+                    {languages.map((l) => (
+                      <option key={l.languageId} value={l.languageId}>
+                        {l.languageDesc}
+                      </option>
+                    ))}
+                  </select>
+                  <button type="button" onClick={() => handleQuickAdd("language")} style={quickAddBtnStyle}>
+                    + New
+                  </button>
+                </div>
+
+                <div style={{ display: "flex", gap: "6px" }}>
+                  <select
+                    value={form.productPublisher}
+                    onChange={(e) => handleFormChange("productPublisher", e.target.value)}
+                    style={{ ...inputStyle, flex: 1 }}
+                  >
+                    <option value="">-- Select Publisher --</option>
+                    {publishers.map((p) => (
+                      <option key={p.publisherId} value={p.publisherId}>
+                        {p.name}
+                      </option>
+                    ))}
+                  </select>
+                  <button type="button" onClick={() => handleQuickAdd("publisher")} style={quickAddBtnStyle}>
+                    + New
+                  </button>
+                </div>
+
+                <div style={{ display: "flex", gap: "6px", gridColumn: "1 / -1" }}>
+                  <select
+                    value={form.productType}
+                    onChange={(e) => handleFormChange("productType", e.target.value)}
+                    style={{ ...inputStyle, flex: 1 }}
+                  >
+                    <option value="">-- Select Product Type --</option>
+                    {productTypes.map((t) => (
+                      <option key={t.typeId} value={t.typeId}>
+                        {t.typeDesc}
+                      </option>
+                    ))}
+                  </select>
+                  <button type="button" onClick={() => handleQuickAdd("type")} style={quickAddBtnStyle}>
+                    + New
+                  </button>
+                </div>
+
                 <label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                   <input
                     type="checkbox"
@@ -375,21 +608,44 @@ function AdminDashboard() {
                   Is Library Item
                 </label>
 
-                <div style={{ gridColumn: "1 / -1", display: "flex", gap: "10px" }}>
-                  <button
-                    type="submit"
+                {/* PDF upload — only shown once the product actually exists (editing or just-created) */}
+                {editingId && (
+                  <div
                     style={{
-                      padding: "10px 20px",
+                      gridColumn: "1 / -1",
+                      border: "1px dashed #059669",
                       borderRadius: "8px",
-                      border: "none",
-                      background: "#312e81",
-                      color: "#fff",
-                      fontWeight: "700",
-                      cursor: "pointer",
+                      padding: "14px",
                     }}
                   >
-                    {editingId ? "Save Changes" : "Create Product"}
-                  </button>
+                    <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#059669" }}>
+                      Upload Book PDF
+                    </label>
+                    <input
+                      type="file"
+                      accept="application/pdf"
+                      onChange={(e) => handleUploadPdf(editingId, e.target.files[0])}
+                    />
+                  </div>
+                )}
+
+                <div style={{ gridColumn: "1 / -1", display: "flex", gap: "10px" }}>
+                  {!justCreated && (
+                    <button
+                      type="submit"
+                      style={{
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        border: "none",
+                        background: "#312e81",
+                        color: "#fff",
+                        fontWeight: "700",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {editingId ? "Save Changes" : "Create Product"}
+                    </button>
+                  )}
                   <button
                     type="button"
                     onClick={resetForm}
@@ -401,7 +657,7 @@ function AdminDashboard() {
                       cursor: "pointer",
                     }}
                   >
-                    Cancel
+                    {justCreated ? "Done" : "Cancel"}
                   </button>
                 </div>
               </form>
@@ -412,6 +668,8 @@ function AdminDashboard() {
                 <tr style={{ textAlign: "left", borderBottom: "2px solid #e5e7eb" }}>
                   <th style={thStyle}>ID</th>
                   <th style={thStyle}>Name</th>
+                  <th style={thStyle}>Author</th>
+                  <th style={thStyle}>Genre</th>
                   <th style={thStyle}>Base Price</th>
                   <th style={thStyle}>Offer Price</th>
                   <th style={thStyle}>Rentable</th>
@@ -423,6 +681,8 @@ function AdminDashboard() {
                   <tr key={p.productId} style={{ borderBottom: "1px solid #f1f5f9" }}>
                     <td style={tdStyle}>{p.productId}</td>
                     <td style={tdStyle}>{p.productName}</td>
+                    <td style={tdStyle}>{p.authorName || "-"}</td>
+                    <td style={tdStyle}>{p.genreName || "-"}</td>
                     <td style={tdStyle}>Rs. {p.productBaseprice}</td>
                     <td style={tdStyle}>{p.productOfferprice ? `Rs. ${p.productOfferprice}` : "-"}</td>
                     <td style={tdStyle}>{p.isRentable ? "Yes" : "No"}</td>
@@ -433,6 +693,15 @@ function AdminDashboard() {
                       <button onClick={() => handleDelete(p.productId)} style={deleteBtnStyle}>
                         Delete
                       </button>
+                      <label style={uploadBtnStyle}>
+                        Upload PDF
+                        <input
+                          type="file"
+                          accept="application/pdf"
+                          onChange={(e) => handleUploadPdf(p.productId, e.target.files[0])}
+                          style={{ display: "none" }}
+                        />
+                      </label>
                     </td>
                   </tr>
                 ))}
@@ -503,6 +772,28 @@ const deleteBtnStyle = {
   background: "transparent",
   color: "#dc2626",
   cursor: "pointer",
+};
+
+const uploadBtnStyle = {
+  display: "inline-block",
+  padding: "6px 12px",
+  marginLeft: "8px",
+  borderRadius: "6px",
+  border: "1px solid #059669",
+  color: "#059669",
+  cursor: "pointer",
+  fontSize: "0.85rem",
+};
+
+const quickAddBtnStyle = {
+  padding: "0 12px",
+  borderRadius: "6px",
+  border: "1px solid #312e81",
+  background: "transparent",
+  color: "#312e81",
+  cursor: "pointer",
+  fontSize: "0.8rem",
+  whiteSpace: "nowrap",
 };
 
 export default AdminDashboard;

@@ -57,14 +57,16 @@ namespace WebDigital
 
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IProductService, ProductService>();
-            builder.Services.AddScoped<TokenService>();
-            builder.Services.AddScoped<IUserService, UserService>();
-            builder.Services.AddScoped<IProductService, ProductService>();
             builder.Services.AddScoped<IAuthorService, AuthorService>();
             builder.Services.AddScoped<IGenreService, GenreService>();
             builder.Services.AddScoped<ILanguageService, LanguageService>();
             builder.Services.AddScoped<IPublisherService, PublisherService>();
             builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
+            builder.Services.AddScoped<ICartService, CartService>();
+            builder.Services.AddScoped<ITransactionService, TransactionService>();
+            builder.Services.AddScoped<IMyShelfService, MyShelfService>();
+            builder.Services.AddScoped<IPdfBookService, PdfBookService>();
+            builder.Services.AddScoped<TokenService>();
 
             // ---- CORS: allow the React dev server to call this API ----
             var reactAppOrigin = "ReactApp";

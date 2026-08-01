@@ -66,6 +66,18 @@ function Navbar({ search, onSearchChange, onSearchSubmit }) {
       )}
 
       <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+        <span style={{ cursor: "pointer", fontSize: "0.9rem" }} onClick={() => navigate("/my-shelf")}>
+          📚 My Shelf
+        </span>
+        <span style={{ cursor: "pointer", fontSize: "0.9rem" }} onClick={() => navigate("/my-library")}>
+          📖 My Library
+        </span>
+        <span style={{ cursor: "pointer", fontSize: "0.9rem" }} onClick={() => navigate("/orders")}>
+          My Orders
+        </span>
+        <span style={{ cursor: "pointer", fontSize: "0.9rem" }} onClick={() => navigate("/cart")}>
+          🛒 Cart
+        </span>
         <span style={{ fontSize: "0.9rem" }}>Hi, {userName}</span>
         <button
           onClick={handleLogout}
