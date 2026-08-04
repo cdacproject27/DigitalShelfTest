@@ -1,0 +1,5 @@
+package com.digitalshelf.authservice.security;
+
+public class JwtUtil {
+
+}
