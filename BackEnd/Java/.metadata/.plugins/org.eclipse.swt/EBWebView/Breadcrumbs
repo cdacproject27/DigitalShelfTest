@@ -1,0 +1,30 @@
+0:15:01 Memory Pressure: Critical
+0:15:06 Memory Pressure: Critical
+0:15:11 Memory Pressure: Critical
+0:15:16 Memory Pressure: Critical
+0:15:21 Memory Pressure: Critical
+0:15:25 Microsoft.Shutdown.TabStripModel.SendDetachWebContentsNotifications
+0:15:27 Browser2 Close Tab2 at 0
+0:15:27 Tab2 WebContentsDestroyed
+0:15:28 Microsoft.UnloadController.IsUnclosableApp_IsNotWebApp
+0:15:28 Microsoft.UnloadController.HasCompletedUnloadProcessing_False
+0:15:28 Microsoft.Shutdown.OnWindowClosing
+0:15:28 Microsoft.UnloadController.IsUnclosableApp_IsNotWebApp
+0:15:28 Microsoft.UnloadController.HasCompletedUnloadProcessing_True
+0:15:28 Microsoft.Shutdown.OnWindowClosing_MaybeClearBrowsingDataOnExit
+0:15:28 Microsoft.Shutdown.OnWindowClosing_ClearBrowsingDataOnExitNotInProgress
+0:15:28 Microsoft.Shutdown.OnWindowClosingPostClearBrowsingData_NoBrowsingDataCleared
+0:15:29 Widget Closed: BrowserWidget
+0:15:29 Microsoft.UnloadController.TabStripEmpty
+0:15:30 Microsoft.Shutdown.OnWindowClosing
+0:15:30 Microsoft.Shutdown.OnWindowClosing_DeleteScheduled
+0:15:30 Microsoft.Last_Browser_Removed
+0:15:30 Memory Pressure: Critical
+0:15:31 Microsoft.Shutdown.ShutdownIfNoBrowsers
+0:15:31 Microsoft.Shutdown.SetTryingToQuit_Quitting
+0:15:31 Microsoft.Shutdown.NotifyAppTerminating
+0:15:31 Microsoft.Shutdown.OnAppExiting
+0:15:31 Microsoft.Shutdown.HandleAppExitingForPlatform_Aura
+0:15:31 Microsoft.Shutdown.HandleAppExitingForPlatform_Aura.NotificationUIManager_StartShutdown
+0:15:31 Microsoft.Shutdown.HandleAppExitingForPlatform_Aura.CloseAllSecondaryWidgets
+0:15:32 Shutdown
