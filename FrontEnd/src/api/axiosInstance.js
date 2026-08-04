@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://localhost:7042/api",
+  // baseURL: "https://localhost:7042/api",
+  baseURL: "http://localhost:8080/api",
 });
 
 // Automatically attach the JWT token (if present) to every request
@@ -13,8 +14,6 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// If the backend ever rejects the token (expired, invalid, or missing),
-// clear the stale session and send the user back to login automatically.
 api.interceptors.response.use(
   (response) => response,
   (error) => {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api/axiosInstance"; 
 import { useDispatch } from "react-redux";
 import { login } from "../redux/authSlice";
 import { useNavigate } from "react-router-dom";
@@ -50,8 +50,8 @@ function Login() {
     }
 
     try {
-      const res = await axios.post(
-        "https://localhost:7042/api/users/login",
+      const res = await api.post(
+        "/users/login",
         {
           userEmail: email,
           password: password,
