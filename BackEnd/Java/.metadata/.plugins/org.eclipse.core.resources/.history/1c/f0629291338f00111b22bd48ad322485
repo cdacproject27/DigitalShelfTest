@@ -1,0 +1,5 @@
+package com.digitalshelf.authservice.service;
+
+public class UserService {
+
+}

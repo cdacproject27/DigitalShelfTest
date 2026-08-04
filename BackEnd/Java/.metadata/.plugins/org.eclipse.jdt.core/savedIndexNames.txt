@@ -1,0 +1,5 @@
+INDEX VERSION 1.134+E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.jdt.core
+1050042363.index
+2791121579.index
+1865797976.index
+3413270776.index

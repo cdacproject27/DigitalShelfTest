@@ -1,0 +1,5 @@
+package com.digitalshelf.authservice.config;
+
+public class SecurityConfig {
+
+}
