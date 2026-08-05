@@ -17,3 +17,23 @@
 2026-08-04 09:47:58.290: [INFO] OnDoneLoading sync enabled: 0
 2026-08-04 10:48:07.959: [INFO] OnDoneLoading sync enabled: 0
 2026-08-04 11:51:13.606: [INFO] OnDoneLoading sync enabled: 0
+2026-08-04 17:37:38.690: [INFO] OnDoneLoading sync enabled: 0
+2026-08-04 17:50:15.288: [INFO] OnDoneLoading sync enabled: 0
+2026-08-05 05:50:59.781: [INFO] CurrentProfilePath: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-05 05:50:59.781: [INFO] Profiles total count: 1
+2026-08-05 05:50:59.781: [INFO] Profile: name=Profile 1 path=E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default lastActive=null
+2026-08-05 05:50:59.781: [INFO] LastUsedProfileDir: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-05 05:50:59.781: [INFO] OnDoneLoading sync enabled: 0
+2026-08-05 05:50:59.781: [INFO] BookmarkModelLoaded, ids_reassigned: 0
+2026-08-05 05:50:59.781: [INFO] BookmarksLoadDropped droppedNodes=0
+2026-08-05 05:50:59.781: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-05 05:52:11.302: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-05 05:53:16.544: [INFO] CurrentProfilePath: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-05 05:53:16.544: [INFO] Profiles total count: 1
+2026-08-05 05:53:16.544: [INFO] Profile: name=Profile 1 path=E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default lastActive=null
+2026-08-05 05:53:16.544: [INFO] LastUsedProfileDir: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-05 05:53:16.544: [INFO] OnDoneLoading sync enabled: 0
+2026-08-05 05:53:16.544: [INFO] BookmarkModelLoaded, ids_reassigned: 0
+2026-08-05 05:53:16.544: [INFO] BookmarksLoadDropped droppedNodes=0
+2026-08-05 05:53:16.544: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-05 06:02:30.842: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
