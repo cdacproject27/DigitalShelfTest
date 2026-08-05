@@ -67,6 +67,8 @@ function UserDashboard() {
     }
   };
 
+ 
+
   return (
     <div style={{ fontFamily: "Segoe UI, Arial, sans-serif", minHeight: "100vh", background: "#f8fafc" }}>
       <Navbar search={search} onSearchChange={setSearch} onSearchSubmit={handleSearchSubmit} />
@@ -145,7 +147,7 @@ function UserDashboard() {
                 >
                   {product.productImage ? (
                     <img
-                      src={`https://localhost:7042${product.productImage}`}
+                      src={`http://localhost:5173/${product.productImage}`}
                       alt={product.productName}
                       style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     />
