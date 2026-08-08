@@ -3,7 +3,6 @@ import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/TextLayer.css";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 
-// Load the PDF.js worker from a CDN — avoids Vite bundling headaches
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 function ReadBookModal({ blobUrl, title, onClose }) {
@@ -13,7 +12,6 @@ function ReadBookModal({ blobUrl, title, onClose }) {
 
   useEffect(() => {
     const blockShortcuts = (e) => {
-      // Block Save, Print (print dialogs allow "save as PDF"), and DevTools shortcuts
       if ((e.ctrlKey || e.metaKey) && (e.key === "s" || e.key === "p")) {
         e.preventDefault();
       }

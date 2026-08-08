@@ -51,6 +51,11 @@ public class PdfBookService {
             throw new BadRequestException("Could not read the uploaded file.");
         }
     }
+    
+    public PdfBook getPdfBook(Integer productId) {
+        return pdfBookRepository.findByProductId(productId)
+                .orElseThrow(() -> new NotFoundException("No readable file is available for this book."));
+    }
 
     public boolean hasPdf(Integer productId) {
         return pdfBookRepository.existsByProductId(productId);

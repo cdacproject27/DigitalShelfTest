@@ -7,11 +7,10 @@ function Orders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchOrders = async () => {
+    const fetchOrders = async () => { 
       try {
         const res = await api.get("/transactions");
         setOrders(res.data);

@@ -20,6 +20,7 @@ public class GatewayConfig {
                 .filter(lb("auth-service"))
                 .build();
     }
+
     @Bean
     public RouterFunction<ServerResponse> productServiceRoute() {
         return route("product-service")
@@ -27,6 +28,7 @@ public class GatewayConfig {
                 .filter(lb("product-service"))
                 .build();
     }
+
     @Bean
     public RouterFunction<ServerResponse> authorRoute() {
         return route("author-route")
@@ -63,6 +65,38 @@ public class GatewayConfig {
     public RouterFunction<ServerResponse> productTypeRoute() {
         return route("product-type-route")
                 .route(path("/api/product-types/**").or(path("/api/product-types")), http())
+                .filter(lb("product-service"))
+                .build();
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> cartRoute() {
+        return route("cart-route")
+                .route(path("/api/cart/**").or(path("/api/cart")), http())
+                .filter(lb("transaction-service"))
+                .build();
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> transactionRoute() {
+        return route("transaction-route")
+                .route(path("/api/transactions/**").or(path("/api/transactions")), http())
+                .filter(lb("transaction-service"))
+                .build();
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> myShelfRoute() {
+        return route("my-shelf-route")
+                .route(path("/api/my-shelf/**").or(path("/api/my-shelf")), http())
+                .filter(lb("transaction-service"))
+                .build();
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> pdfRawRoute() {
+        return route("pdf-raw-route")
+                .route(path("/api/products/{productId}/pdf/raw"), http())
                 .filter(lb("product-service"))
                 .build();
     }
