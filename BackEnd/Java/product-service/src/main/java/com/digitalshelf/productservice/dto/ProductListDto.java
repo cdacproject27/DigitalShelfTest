@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -19,8 +21,12 @@ public class ProductListDto {
     private BigDecimal productBaseprice;
     private BigDecimal productOfferprice;
     private BigDecimal discountPercent;
-    private boolean isRentable;
-    private boolean isLibrary;
     private String authorName;
     private String genreName;
+    
+    @JsonProperty("isRentable")
+    private boolean isRentable;
+
+    @JsonProperty("isLibrary")
+    private boolean isLibrary;
 }

@@ -166,7 +166,7 @@ function Cart() {
                 >
                   {item.productImage ? (
                     <img
-                      src={`https://localhost:7042${item.productImage}`}
+                      src={`http://localhost:5173/${item.productImage}`}
                       alt={item.productName}
                       style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     />

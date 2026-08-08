@@ -37,3 +37,74 @@
 2026-08-05 05:53:16.544: [INFO] BookmarksLoadDropped droppedNodes=0
 2026-08-05 05:53:16.544: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
 2026-08-05 06:02:30.842: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-05 07:23:12.331: [INFO] CurrentProfilePath: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-05 07:23:12.331: [INFO] Profiles total count: 1
+2026-08-05 07:23:12.331: [INFO] Profile: name=Profile 1 path=E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default lastActive=null
+2026-08-05 07:23:12.331: [INFO] LastUsedProfileDir: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-05 07:23:12.331: [INFO] OnDoneLoading sync enabled: 0
+2026-08-05 07:23:12.331: [INFO] BookmarkModelLoaded, ids_reassigned: 0
+2026-08-05 07:23:12.331: [INFO] BookmarksLoadDropped droppedNodes=0
+2026-08-05 07:23:12.331: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-05 07:23:58.809: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-05 07:27:44.536: [INFO] CurrentProfilePath: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-05 07:27:44.536: [INFO] Profiles total count: 1
+2026-08-05 07:27:44.536: [INFO] Profile: name=Profile 1 path=E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default lastActive=null
+2026-08-05 07:27:44.536: [INFO] LastUsedProfileDir: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-05 07:27:44.536: [INFO] OnDoneLoading sync enabled: 0
+2026-08-05 07:27:44.536: [INFO] BookmarkModelLoaded, ids_reassigned: 0
+2026-08-05 07:27:44.536: [INFO] BookmarksLoadDropped droppedNodes=0
+2026-08-05 07:27:44.536: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-05 07:35:10.089: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-05 07:55:10.379: [INFO] CurrentProfilePath: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-05 07:55:10.379: [INFO] Profiles total count: 1
+2026-08-05 07:55:10.379: [INFO] Profile: name=Profile 1 path=E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default lastActive=null
+2026-08-05 07:55:10.379: [INFO] LastUsedProfileDir: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-05 07:55:10.379: [INFO] OnDoneLoading sync enabled: 0
+2026-08-05 07:55:10.379: [INFO] BookmarkModelLoaded, ids_reassigned: 0
+2026-08-05 07:55:10.379: [INFO] BookmarksLoadDropped droppedNodes=0
+2026-08-05 07:55:10.379: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-05 07:59:32.121: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-05 15:27:46.358: [INFO] CurrentProfilePath: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-05 15:27:46.358: [INFO] Profiles total count: 1
+2026-08-05 15:27:46.358: [INFO] Profile: name=Profile 1 path=E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default lastActive=null
+2026-08-05 15:27:46.358: [INFO] LastUsedProfileDir: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-05 15:27:46.358: [INFO] OnDoneLoading sync enabled: 0
+2026-08-05 15:27:46.358: [INFO] BookmarkModelLoaded, ids_reassigned: 0
+2026-08-05 15:27:46.358: [INFO] BookmarksLoadDropped droppedNodes=0
+2026-08-05 15:27:46.358: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-05 18:10:55.841: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-06 05:01:30.895: [INFO] CurrentProfilePath: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-06 05:01:30.895: [INFO] Profiles total count: 1
+2026-08-06 05:01:30.895: [INFO] Profile: name=Profile 1 path=E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default lastActive=null
+2026-08-06 05:01:30.895: [INFO] LastUsedProfileDir: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-06 05:01:30.895: [INFO] OnDoneLoading sync enabled: 0
+2026-08-06 05:01:30.895: [INFO] BookmarkModelLoaded, ids_reassigned: 0
+2026-08-06 05:01:30.895: [INFO] BookmarksLoadDropped droppedNodes=0
+2026-08-06 05:01:30.895: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-06 05:10:47.919: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-07 10:39:31.256: [INFO] CurrentProfilePath: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-07 10:39:31.256: [INFO] Profiles total count: 1
+2026-08-07 10:39:31.256: [INFO] Profile: name=Profile 1 path=E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default lastActive=null
+2026-08-07 10:39:31.256: [INFO] LastUsedProfileDir: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-07 10:39:31.256: [INFO] OnDoneLoading sync enabled: 0
+2026-08-07 10:39:31.256: [INFO] BookmarkModelLoaded, ids_reassigned: 0
+2026-08-07 10:39:31.256: [INFO] BookmarksLoadDropped droppedNodes=0
+2026-08-07 10:39:31.256: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-07 12:52:12.085: [INFO] CurrentProfilePath: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-07 12:52:12.085: [INFO] Profiles total count: 1
+2026-08-07 12:52:12.085: [INFO] Profile: name=Profile 1 path=E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default lastActive=null
+2026-08-07 12:52:12.085: [INFO] LastUsedProfileDir: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-07 12:52:12.085: [INFO] OnDoneLoading sync enabled: 0
+2026-08-07 12:52:12.085: [INFO] BookmarkModelLoaded, ids_reassigned: 0
+2026-08-07 12:52:12.085: [INFO] BookmarksLoadDropped droppedNodes=0
+2026-08-07 12:52:12.085: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-07 13:02:43.264: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-07 15:20:46.601: [INFO] CurrentProfilePath: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-07 15:20:46.601: [INFO] Profiles total count: 1
+2026-08-07 15:20:46.601: [INFO] Profile: name=Profile 1 path=E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default lastActive=null
+2026-08-07 15:20:46.601: [INFO] LastUsedProfileDir: E:\DigitalShelfTest\BackEnd\Java\.metadata\.plugins\org.eclipse.swt\EBWebView\Default
+2026-08-07 15:20:46.601: [INFO] OnDoneLoading sync enabled: 0
+2026-08-07 15:20:46.601: [INFO] BookmarkModelLoaded, ids_reassigned: 0
+2026-08-07 15:20:46.601: [INFO] BookmarksLoadDropped droppedNodes=0
+2026-08-07 15:20:46.601: [INFO] BookmarksSnapshot Startup total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-08-07 15:29:40.246: [INFO] BookmarksSnapshot Shutdown total=0 bar=0 other=0 mobile=0 showBar=0 showBarNTP=1
